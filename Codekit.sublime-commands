@@ -1,0 +1,22 @@
+[
+	{
+		"caption": "Codekit: Add project",
+		"command": "codekit_add_project"
+	},
+	{
+		"caption": "Codekit: Select project from view",
+		"command": "codekit_select_project_from_view"
+	},
+	{
+		"caption": "Codekit: Preview in browser",
+		"command": "codekit_preview_in_browser"
+	},
+	{
+		"caption": "Codekit: Refresh browsers",
+		"command": "codekit_refresh_browsers"
+	},
+	{
+		"caption": "Codekit: Reload style sheets",
+		"command": "codekit_reload_style_sheets"
+	}
+]
