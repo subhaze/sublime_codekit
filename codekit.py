@@ -80,7 +80,7 @@ class CodekitEventListener(sublime_plugin.EventListener):
 
 #
 # Add Project/Frame work commands
-# 
+#
 class CodekitAddProjectCommand(sublime_plugin.ApplicationCommand):
     folders = []
 
@@ -113,7 +113,7 @@ class CodekitAddFrameworkCommand(sublime_plugin.ApplicationCommand):
 
 #
 # Select Project/Framework commands
-# 
+#
 class CodekitSelectProjectFromViewCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
@@ -131,7 +131,7 @@ class CodekitSelectFrameworkFromViewCommand(sublime_plugin.ApplicationCommand):
 #
 # Pause/Unpause commands
 # These commands only work IF auto-pausing is disabled
-# 
+#
 class CodekitPauseCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
@@ -146,7 +146,7 @@ class CodekitUnpauseCommand(sublime_plugin.ApplicationCommand):
 
 #
 # Browser Commands
-# 
+#
 class CodekitPreviewInBrowserCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
