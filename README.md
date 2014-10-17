@@ -1,6 +1,8 @@
 #[CodeKit](https://incident57.com/codekit/) 2 plug-in for Sublime Text
 
 ###Current CodeKit features
+- Automatically switch CodeKit project based on current view
+- - Todo: Add a settings flag to disable this
 - Pause/Unpause CodeKit based on Sublime Text focus
 - - __Todos for pausing__
 - - Add Pause/Unpause to Command Palette
