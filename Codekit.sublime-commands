@@ -16,6 +16,14 @@
 		"command": "codekit_select_framework_from_view"
 	},
 	{
+		"caption": "Codekit: Pause",
+		"command": "codekit_pause"
+	},
+	{
+		"caption": "Codekit: Unpause",
+		"command": "codekit_unpause"
+	},
+	{
 		"caption": "Codekit: Preview in browser",
 		"command": "codekit_preview_in_browser"
 	},

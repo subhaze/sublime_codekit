@@ -1,0 +1,46 @@
+[
+    {
+        "caption": "Preferences",
+        "mnemonic": "n",
+        "id": "preferences",
+        "children":
+        [
+            {
+                "caption": "Package Settings",
+                "mnemonic": "P",
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "CodeKit Commands",
+                        "children":
+                        [
+                            {
+                                "command": "open_file",
+                                "args": {"file": "${packages}/CodeKit/CodeKit.sublime-settings"},
+                                "caption": "Settings – Default"
+                            },
+                            {
+                                "command": "open_file",
+                                "args": {"file": "${packages}/User/CodeKit.sublime-settings"},
+                                "caption": "Settings – User"
+                            },
+                            {
+                                "command": "codekit_toggle_settings",
+                                "args": {"setting": "pause_codekit_on_view_deactivate"},
+                                "caption": "Enable Auto Pausing",
+                                "checkbox": true
+                            },
+                            {
+                                "command": "codekit_toggle_settings",
+                                "args": {"setting": "auto_switch_codekit_projects"},
+                                "caption": "Enable Auto Switch CodeKit Project",
+                                "checkbox": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

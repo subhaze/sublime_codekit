@@ -1,0 +1,9 @@
+{
+	"auto_switch_codekit_projects": true,
+	// This will toggle the pause/unpause states of
+	// CodeKit based on whether you're currently
+	// editing a file or not.
+	// Useful if you're using third-party tools for git.
+	// See: http://incident57.com/codekit/help.html#critical-things
+	"pause_codekit_on_view_deactivate": true
+}
