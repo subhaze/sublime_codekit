@@ -12,6 +12,10 @@
 		"command": "codekit_select_project_from_view"
 	},
 	{
+		"caption": "Codekit: Select framework from view",
+		"command": "codekit_select_framework_from_view"
+	},
+	{
 		"caption": "Codekit: Preview in browser",
 		"command": "codekit_preview_in_browser"
 	},

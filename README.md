@@ -8,6 +8,7 @@
 - Add folder from Sublime Text's sidebar as a CodeKit project
 - Add folder from Sublime Text's sidebar as a CodeKit framework
 - Select a project in CodeKit base on the active view
+- Select a framework in CodeKit base on the active view
 - Preview in browser
 - Refresh browser
 - Reload style sheets

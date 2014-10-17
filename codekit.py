@@ -55,6 +55,13 @@ class CodekitSelectProjectFromViewCommand(sublime_plugin.ApplicationCommand):
         os.system("""osascript -e 'tell application "CodeKit" to select project containing path "%s"'""" % file_name)
 
 
+class CodekitSelectFrameworkFromViewCommand(sublime_plugin.ApplicationCommand):
+
+    def run(self):
+        file_name = sublime.active_window().active_view().file_name()
+        os.system("""osascript -e 'tell application "CodeKit" to select framework containing path "%s"'""" % file_name)
+
+
 class CodekitPreviewInBrowserCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
