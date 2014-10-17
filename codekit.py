@@ -33,6 +33,21 @@ class CodekitAddProjectCommand(sublime_plugin.ApplicationCommand):
             os.system("""osascript -e 'tell application "CodeKit" to add project at path "%s"'""" % self.folders[indx])
 
 
+class CodekitAddFrameworkCommand(sublime_plugin.ApplicationCommand):
+    folders = []
+
+    def run(self):
+        self.folders = sublime.active_window().folders()
+        sublime.active_window().show_quick_panel(
+            [folder.split('/')[-1] for folder in self.folders],
+            self.on_done
+        )
+
+    def on_done(self, indx):
+        if indx > -1:
+            os.system("""osascript -e 'tell application "CodeKit" to add framework at path "%s"'""" % self.folders[indx])
+
+
 class CodekitSelectProjectFromViewCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):

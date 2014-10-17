@@ -4,6 +4,10 @@
 		"command": "codekit_add_project"
 	},
 	{
+		"caption": "Codekit: Add framework",
+		"command": "codekit_add_framework"
+	},
+	{
 		"caption": "Codekit: Select project from view",
 		"command": "codekit_select_project_from_view"
 	},

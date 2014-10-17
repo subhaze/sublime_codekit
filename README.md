@@ -6,6 +6,7 @@
 - - Add Pause/Unpause to Command Palette
 - - Add setting to disable auto pause/unpause based on Sublime Text focus
 - Add folder from Sublime Text's sidebar as a CodeKit project
+- Add folder from Sublime Text's sidebar as a CodeKit framework
 - Select a project in CodeKit base on the active view
 - Preview in browser
 - Refresh browser
