@@ -1,4 +1,4 @@
-#CodeKit 2 plug-in for Sublime Text
+#[CodeKit](https://incident57.com/codekit/) 2 plug-in for Sublime Text
 
 ###Current CodeKit features
 - Pause/Unpause CodeKit based on Sublime Text focus
