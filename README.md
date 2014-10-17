@@ -10,3 +10,7 @@
 - Preview in browser
 - Refresh browser
 - Reload style sheets
+
+###Usage
+
+Just type 'Codekit' in the Command Palette to see the list of commands available.
