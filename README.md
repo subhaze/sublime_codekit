@@ -1,24 +1,9 @@
 #[CodeKit](https://incident57.com/codekit/) 2 plug-in for Sublime Text
 
-##Current CodeKit features
-- Automatically switch CodeKit project based on current view
-- - You can disable this in the settings
-- Pause/Unpause CodeKit based on Sublime Text focus
-- - __Todo:__ Add Pause/Unpause to Command Palette
-- - __Todo:__ Add setting to disable auto pause/unpause based on Sublime Text focus
-- Add folder from Sublime Text's sidebar as a CodeKit project
-- Add folder from Sublime Text's sidebar as a CodeKit framework
-- Select a project in CodeKit base on the active view
-- Select a framework in CodeKit base on the active view
-- Preview in browser
-- Preview in selected browser from list
-- Refresh browser
-- Reload style sheets
-
-----
 
 ##Installation
 
+**Coming soon**
 You'll need [Package Control](https://sublime.wbond.net/installation) installed. Once you've got that setup all you have to do is open the Command Palette (super+shift+p) then type `install package` hit enter, then search for 'CodeKit Commands' and select it.
 
 ----
