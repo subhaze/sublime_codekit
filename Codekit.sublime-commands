@@ -20,6 +20,10 @@
 		"command": "codekit_preview_in_browser"
 	},
 	{
+		"caption": "Codekit: Preview in browser select",
+		"command": "codekit_preview_in_browser_select"
+	},
+	{
 		"caption": "Codekit: Refresh browsers",
 		"command": "codekit_refresh_browsers"
 	},

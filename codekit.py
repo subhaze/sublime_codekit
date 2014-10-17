@@ -68,6 +68,35 @@ class CodekitPreviewInBrowserCommand(sublime_plugin.ApplicationCommand):
         os.system("""osascript -e 'tell application "CodeKit" to preview in browser'""")
 
 
+class CodekitPreviewInBrowserSelectCommand(sublime_plugin.ApplicationCommand):
+
+    browser_dict = {
+        'Firefox': 'Firefox',
+        'FireFoxNightly': 'bundle named "org.mozilla.nightly"',
+        'Chrome': 'Chrome',
+        'Chrome Canary': 'Chrome Canary',
+        'Chromium': 'Chromium',
+        'Opera': 'Opera',
+        'Opera Developer': 'bundle named "com.operasoftware.OperaDeveloper"',
+        'Opera Next': 'bundle named "com.operasoftware.OperaNext"',
+        'Safari': 'Safari',
+        'Webkit Nightly': 'Webkit Nightly'
+    }
+
+    browser_keys = sorted(list(browser_dict.keys()))
+
+    def run(self):
+        sublime.active_window().show_quick_panel(
+            self.browser_keys,
+            self.on_done
+        )
+
+    def on_done(self, indx):
+        if indx > -1:
+            key = self.browser_keys[indx]
+            os.system("""osascript -e 'tell application "CodeKit" to preview in browser %s'""" % self.browser_dict[key])
+
+
 class CodekitRefreshBrowsersCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):

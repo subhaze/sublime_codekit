@@ -10,6 +10,7 @@
 - Select a project in CodeKit base on the active view
 - Select a framework in CodeKit base on the active view
 - Preview in browser
+- Preview in selected browser from list
 - Refresh browser
 - Reload style sheets
 
