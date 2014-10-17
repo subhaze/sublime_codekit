@@ -3,11 +3,21 @@ import sublime, sublime_plugin, os
 
 class CodekitEventListener(sublime_plugin.EventListener):
     is_active = False
+    # Used to ensure we're not making requests to CodeKit
+    # on every view change in the same project
+    folders_key = ''
 
     def on_activated(self, view):
+        # If we don't see Sublime Text as active, make it so
+        # and unpause CodeKit
         if not self.is_active:
             os.system("""osascript -e 'tell application "CodeKit" to unpause file watching'""")
             self.is_active = True
+        current_folders_key = '-'.join(sublime.active_window().folders())
+        if current_folders_key != self.folders_key:
+            print('run command')
+            self.folders_key = current_folders_key
+            sublime.active_window().run_command('codekit_select_project_from_view')
 
     def on_deactivated(self, view):
         self.is_active = False
@@ -52,6 +62,7 @@ class CodekitSelectProjectFromViewCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
         file_name = sublime.active_window().active_view().file_name()
+        print('select proj ', file_name)
         os.system("""osascript -e 'tell application "CodeKit" to select project containing path "%s"'""" % file_name)
 
 
