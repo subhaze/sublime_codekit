@@ -15,7 +15,6 @@ class CodekitEventListener(sublime_plugin.EventListener):
             self.is_active = True
         current_folders_key = '-'.join(sublime.active_window().folders())
         if current_folders_key != self.folders_key:
-            print('run command')
             self.folders_key = current_folders_key
             sublime.active_window().run_command('codekit_select_project_from_view')
 
