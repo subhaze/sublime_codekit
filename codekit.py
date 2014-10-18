@@ -11,8 +11,7 @@ class _Singleton(type):
         return cls._instances[cls]
 
 
-class Singleton(_Singleton('SingletonMeta', (object,), {})):
-    pass
+Singleton = _Singleton('SingletonMeta', (object,), {})
 #
 # Ends Helper Utils
 #
