@@ -17,7 +17,7 @@
                         [
                             {
                                 "command": "open_file",
-                                "args": {"file": "${packages}/CodeKit/CodeKit.sublime-settings"},
+                                "args": {"file": "${packages}/CodeKit Commands/CodeKit.sublime-settings"},
                                 "caption": "Settings – Default"
                             },
                             {
