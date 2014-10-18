@@ -3,7 +3,6 @@
 
 ##Installation
 
-**Coming soon**
 You'll need [Package Control](https://sublime.wbond.net/installation) installed. Once you've got that setup all you have to do is open the Command Palette (super+shift+p) then type `install package` hit enter, then search for 'CodeKit Commands' and select it.
 
 ----
