@@ -72,12 +72,11 @@ class CodeKitState(Singleton):
 #
 # Setup Settings file
 #
-if CodeKitState().isST2:
-    CodeKitState().settings = sublime.load_settings('CodeKit.sublime-settings')
-
-
 def plugin_loaded():
     CodeKitState().settings = sublime.load_settings('CodeKit.sublime-settings')
+
+if CodeKitState().isST2:
+    plugin_loaded()
 #
 # End Setup Settings File
 #
