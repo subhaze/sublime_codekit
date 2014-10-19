@@ -36,21 +36,9 @@ class CodeKitState(Singleton):
         if not self.settings.get('pause_codekit_on_view_deactivate', True):
             return
         if CodeKitState().st_view_active:
-            self.unpause_code_kit()
+            sublime.active_window().run_command('codekit_unpause')
         else:
-            self.pause_code_kit()
-
-    def unpause_code_kit(self):
-        # If we don't see Sublime Text as active, make it so
-        # and unpause CodeKit
-        if CodeKitState().is_paused:
-            os.system("""osascript -e 'tell application "CodeKit" to unpause file watching'""")
-            CodeKitState().is_paused = False
-
-    def pause_code_kit(self):
-        if not CodeKitState().is_paused:
-            os.system("""osascript -e 'tell application "CodeKit" to pause file watching'""")
-            CodeKitState().is_paused = True
+            sublime.active_window().run_command('codekit_pause')
 
     # Handle auto activating CodeKit projects
     def activate_code_kit_project(self, view):
@@ -172,7 +160,9 @@ class CodekitSelectFrameworkFromViewCommand(sublime_plugin.ApplicationCommand):
 class CodekitPauseCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
-        CodeKitState().pause_code_kit()
+        if not CodeKitState().is_paused:
+            os.system("""osascript -e 'tell application "CodeKit" to pause file watching'""")
+            CodeKitState().is_paused = True
 
     def is_visible(self):
         return not CodeKitState().settings.get('pause_codekit_on_view_deactivate')
@@ -181,7 +171,9 @@ class CodekitPauseCommand(sublime_plugin.ApplicationCommand):
 class CodekitUnpauseCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
-        CodeKitState().unpause_code_kit()
+        if CodeKitState().is_paused:
+            os.system("""osascript -e 'tell application "CodeKit" to unpause file watching'""")
+            CodeKitState().is_paused = False
 
     def is_visible(self):
         return not CodeKitState().settings.get('pause_codekit_on_view_deactivate')
