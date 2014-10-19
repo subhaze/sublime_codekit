@@ -20,7 +20,7 @@ Singleton = _Singleton('SingletonMeta', (object,), {})
 #
 
 
-class CodeKitState(Singleton):
+class CodeKit(Singleton):
     isST2 = int(sublime.version()) < 3000
     # Holds the property/values of the Sublime Text Settings file
     settings = None
@@ -35,7 +35,7 @@ class CodeKitState(Singleton):
     def handle_auto_pausing(self):
         if not self.settings.get('pause_codekit_on_view_deactivate', True):
             return
-        if CodeKitState().st_view_active:
+        if CodeKit().st_view_active:
             sublime.active_window().run_command('codekit_unpause')
         else:
             sublime.active_window().run_command('codekit_pause')
@@ -73,9 +73,9 @@ class CodeKitState(Singleton):
 # Setup Settings file
 #
 def plugin_loaded():
-    CodeKitState().settings = sublime.load_settings('CodeKit.sublime-settings')
+    CodeKit().settings = sublime.load_settings('CodeKit.sublime-settings')
 
-if CodeKitState().isST2:
+if CodeKit().isST2:
     plugin_loaded()
 #
 # End Setup Settings File
@@ -85,19 +85,19 @@ if CodeKitState().isST2:
 class CodekitEventListener(sublime_plugin.EventListener):
 
     def on_activated(self, view):
-        CodeKitState().st_view_active = True
-        CodeKitState().handle_auto_pausing()
-        CodeKitState().activate_code_kit_project(view)
+        CodeKit().st_view_active = True
+        CodeKit().handle_auto_pausing()
+        CodeKit().activate_code_kit_project(view)
 
     def on_deactivated(self, view):
-        CodeKitState().st_view_active = False
+        CodeKit().st_view_active = False
 
         # A bit of a hack due to ST triggering a deactivate then activate on the
         # same file when you open things like the command palette.
         # This should reduce a lot of false signaling to the CodeKit API
         def delayed_code_kit_pause():
-            if not CodeKitState().st_view_active:
-                CodeKitState().handle_auto_pausing()
+            if not CodeKit().st_view_active:
+                CodeKit().handle_auto_pausing()
 
         sublime.set_timeout(delayed_code_kit_pause, 20)
 
@@ -159,23 +159,23 @@ class CodekitSelectFrameworkFromViewCommand(sublime_plugin.ApplicationCommand):
 class CodekitPauseCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
-        if not CodeKitState().is_paused:
+        if not CodeKit().is_paused:
             os.system("""osascript -e 'tell application "CodeKit" to pause file watching'""")
-            CodeKitState().is_paused = True
+            CodeKit().is_paused = True
 
     def is_visible(self):
-        return not CodeKitState().settings.get('pause_codekit_on_view_deactivate')
+        return not CodeKit().settings.get('pause_codekit_on_view_deactivate')
 
 
 class CodekitUnpauseCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
-        if CodeKitState().is_paused:
+        if CodeKit().is_paused:
             os.system("""osascript -e 'tell application "CodeKit" to unpause file watching'""")
-            CodeKitState().is_paused = False
+            CodeKit().is_paused = False
 
     def is_visible(self):
-        return not CodeKitState().settings.get('pause_codekit_on_view_deactivate')
+        return not CodeKit().settings.get('pause_codekit_on_view_deactivate')
 
 
 #
