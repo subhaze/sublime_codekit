@@ -131,31 +131,59 @@ class CodekitEventListener(sublime_plugin.EventListener):
 class CodekitAddProjectCommand(sublime_plugin.ApplicationCommand):
     folders = []
 
-    def run(self):
+    def run(self, dirs=None):
+        if dirs and len(dirs):
+            self.from_side_bar(dirs[0])
+        elif dirs == None:
+            self.from_command_palette()
+
+    def from_command_palette(self):
         self.folders = sublime.active_window().folders()
         sublime.active_window().show_quick_panel(
             [folder.split('/')[-1] for folder in self.folders],
             self.on_done
         )
+
+    def from_side_bar(self, folder):
+        CodeKit().run_apple_script('add project at path "%s"' % folder)
 
     def on_done(self, indx):
         if indx > -1:
             CodeKit().run_apple_script('add project at path "%s"' % self.folders[indx])
 
+    def is_enabled(self, dirs=None):
+        if dirs and len(dirs):
+            return True
+        return False
+
 
 class CodekitAddFrameworkCommand(sublime_plugin.ApplicationCommand):
     folders = []
 
-    def run(self):
+    def run(self, dirs=None):
+        if dirs and len(dirs):
+            self.from_side_bar(dirs[0])
+        elif dirs == None:
+            self.from_command_palette()
+
+    def from_command_palette(self):
         self.folders = sublime.active_window().folders()
         sublime.active_window().show_quick_panel(
             [folder.split('/')[-1] for folder in self.folders],
             self.on_done
         )
 
+    def from_side_bar(self, folder):
+        CodeKit().run_apple_script('add framework at path "%s"' % folder)
+
     def on_done(self, indx):
         if indx > -1:
             CodeKit().run_apple_script('add framework at path "%s"' % self.folders[indx])
+
+    def is_enabled(self, dirs=None):
+        if dirs and len(dirs):
+            return True
+        return False
 
 
 #

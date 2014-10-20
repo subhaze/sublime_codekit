@@ -1,0 +1,22 @@
+[
+	{"caption":"-", "id":"code_kit_commands"},
+	{
+		"caption": "CodeKit Commands",
+		"id": "code_kit_commands_parent",
+		"args": {"dirs": []},
+		"children":[
+			{
+				"caption": "Create CodeKit Project",
+				"id": "code_kit_commands_add_project",
+				"command": "codekit_add_project",
+				"args": {"dirs": []}
+			},
+			{
+				"caption": "Create CodeKit Framework",
+				"id": "code_kit_commands_add_framework",
+				"command": "codekit_add_framework",
+				"args": {"dirs": []}
+			}
+		]
+	}
+]
