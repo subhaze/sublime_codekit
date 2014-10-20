@@ -25,12 +25,15 @@ If you're currently working on a project or framework that CodeKit doesn't know 
 
 Alternatively you can right click on a folder in the side bar and select `CodeKit Commands > Create CodeKit Project` or `CodeKit Commands > Create CodeKit Framework` and add that specific folder to CodeKit.
 
-###Auto-pausing CodeKit
+###Pausing CodeKit
+
+#####Auto-Pausing CodeKit
 By default this plug-in will pause CodeKit when you're not focused on Sublime Text. This can be useful if you use the CLI or third-party tools to handle source control.
 
 CodeKit states:
 >Before you perform any action that will change large numbers of files at once (switching branches, rebasing, pull requests, etc.) you MUST tell CodeKit to ignore file changes.
 
+#####Manually Pausing CodeKit
 If you'd rather handle toggling the paused state of CodeKit you can disable this feature by unchecking `Preferences>Package Settings>CodeKit Commands>Enable Auto Pausing` and run the `CodeKit pause` and `CodeKit unpause` commands from the Command Palette.
 
 _Heads Up:_ These two commands are hidden from the Command Palette when auto-pausing is enabled since they're useless otherwise.
