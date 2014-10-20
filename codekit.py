@@ -131,10 +131,10 @@ class CodekitEventListener(sublime_plugin.EventListener):
 class CodekitAddProjectCommand(sublime_plugin.ApplicationCommand):
     folders = []
 
-    def run(self, dirs=None):
-        if dirs and len(dirs):
+    def run(self, dirs=None, from_side_bar=False):
+        if dirs and len(dirs) and from_side_bar:
             self.from_side_bar(dirs[0])
-        elif dirs == None:
+        elif not from_side_bar:
             self.from_command_palette()
 
     def from_command_palette(self):
@@ -151,8 +151,8 @@ class CodekitAddProjectCommand(sublime_plugin.ApplicationCommand):
         if indx > -1:
             CodeKit().run_apple_script('add project at path "%s"' % self.folders[indx])
 
-    def is_enabled(self, dirs=None):
-        if dirs and len(dirs):
+    def is_enabled(self, dirs=None, from_side_bar=False):
+        if dirs and len(dirs) or not from_side_bar:
             return True
         return False
 
@@ -160,10 +160,10 @@ class CodekitAddProjectCommand(sublime_plugin.ApplicationCommand):
 class CodekitAddFrameworkCommand(sublime_plugin.ApplicationCommand):
     folders = []
 
-    def run(self, dirs=None):
-        if dirs and len(dirs):
+    def run(self, dirs=None, from_side_bar=False):
+        if dirs and len(dirs) and from_side_bar:
             self.from_side_bar(dirs[0])
-        elif dirs == None:
+        elif not from_side_bar:
             self.from_command_palette()
 
     def from_command_palette(self):
@@ -180,8 +180,8 @@ class CodekitAddFrameworkCommand(sublime_plugin.ApplicationCommand):
         if indx > -1:
             CodeKit().run_apple_script('add framework at path "%s"' % self.folders[indx])
 
-    def is_enabled(self, dirs=None):
-        if dirs and len(dirs):
+    def is_enabled(self, dirs=None, from_side_bar=False):
+        if dirs and len(dirs) or not from_side_bar:
             return True
         return False
 

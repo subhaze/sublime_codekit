@@ -9,13 +9,13 @@
 				"caption": "Create CodeKit Project",
 				"id": "code_kit_commands_add_project",
 				"command": "codekit_add_project",
-				"args": {"dirs": []}
+				"args": {"dirs": [], "from_side_bar": true}
 			},
 			{
 				"caption": "Create CodeKit Framework",
 				"id": "code_kit_commands_add_framework",
 				"command": "codekit_add_framework",
-				"args": {"dirs": []}
+				"args": {"dirs": [], "from_side_bar": true}
 			}
 		]
 	}
