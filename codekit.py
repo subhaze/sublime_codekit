@@ -31,6 +31,9 @@ class CodeKit(Singleton):
     folders_key = ''
     current_path = ''
 
+    def run_apple_script(self, command):
+        os.system("""osascript -e 'tell application "CodeKit" to %s'""" % command)
+
     # Handle CodeKit pause/unpause
     def handle_auto_pausing(self):
         if not self.settings.get('pause_codekit_on_view_deactivate', True):
@@ -117,7 +120,7 @@ class CodekitAddProjectCommand(sublime_plugin.ApplicationCommand):
 
     def on_done(self, indx):
         if indx > -1:
-            os.system("""osascript -e 'tell application "CodeKit" to add project at path "%s"'""" % self.folders[indx])
+            CodeKit().run_apple_script('add project at path "%s"' % self.folders[indx])
 
 
 class CodekitAddFrameworkCommand(sublime_plugin.ApplicationCommand):
@@ -132,7 +135,7 @@ class CodekitAddFrameworkCommand(sublime_plugin.ApplicationCommand):
 
     def on_done(self, indx):
         if indx > -1:
-            os.system("""osascript -e 'tell application "CodeKit" to add framework at path "%s"'""" % self.folders[indx])
+            CodeKit().run_apple_script('add framework at path "%s"' % self.folders[indx])
 
 
 #
@@ -142,14 +145,14 @@ class CodekitSelectProjectFromViewCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
         file_name = sublime.active_window().active_view().file_name()
-        os.system("""osascript -e 'tell application "CodeKit" to select project containing path "%s"'""" % file_name)
+        CodeKit().run_apple_script('select project containing path "%s"' % file_name)
 
 
 class CodekitSelectFrameworkFromViewCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
         file_name = sublime.active_window().active_view().file_name()
-        os.system("""osascript -e 'tell application "CodeKit" to select framework containing path "%s"'""" % file_name)
+        CodeKit().run_apple_script('select framework containing path "%s"' % file_name)
 
 
 #
@@ -160,7 +163,7 @@ class CodekitPauseCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
         if not CodeKit().is_paused:
-            os.system("""osascript -e 'tell application "CodeKit" to pause file watching'""")
+            CodeKit().run_apple_script("pause file watching")
             CodeKit().is_paused = True
 
     def is_visible(self):
@@ -171,7 +174,7 @@ class CodekitUnpauseCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
         if CodeKit().is_paused:
-            os.system("""osascript -e 'tell application "CodeKit" to unpause file watching'""")
+            CodeKit().run_apple_script('unpause file watching')
             CodeKit().is_paused = False
 
     def is_visible(self):
@@ -184,7 +187,7 @@ class CodekitUnpauseCommand(sublime_plugin.ApplicationCommand):
 class CodekitPreviewInBrowserCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
-        os.system("""osascript -e 'tell application "CodeKit" to preview in browser'""")
+        CodeKit().run_apple_script('preview in browser')
 
 
 class CodekitPreviewInBrowserSelectCommand(sublime_plugin.ApplicationCommand):
@@ -213,19 +216,19 @@ class CodekitPreviewInBrowserSelectCommand(sublime_plugin.ApplicationCommand):
     def on_done(self, indx):
         if indx > -1:
             key = self.browser_keys[indx]
-            os.system("""osascript -e 'tell application "CodeKit" to preview in browser %s'""" % self.browser_dict[key])
+            CodeKit().run_apple_script('preview in browser %s' % self.browser_dict[key])
 
 
 class CodekitRefreshBrowsersCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
-        os.system("""osascript -e 'tell application "CodeKit" to refresh browsers'""")
+        CodeKit().run_apple_script('refresh browsers')
 
 
 class CodekitReloadStyleSheetsCommand(sublime_plugin.ApplicationCommand):
 
     def run(self):
-        os.system("""osascript -e 'tell application "CodeKit" to refresh browsers by reloading just stylesheets'""")
+        CodeKit().run_apple_script('refresh browsers by reloading just stylesheets')
 
 
 #
