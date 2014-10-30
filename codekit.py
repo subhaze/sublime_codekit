@@ -110,7 +110,7 @@ if CodeKit().isST2:
 
 
 class CodekitEventListener(sublime_plugin.EventListener):
-
+    import time
     def on_activated(self, view):
         if CodeKit().isST2:
             CodeKit().handle_view_activated(view)
@@ -124,6 +124,10 @@ class CodekitEventListener(sublime_plugin.EventListener):
 
     def on_deactivated_async(self, view):
         CodeKit().handle_view_deactivated(view)
+
+    def on_close(self, view):
+       if len(sublime.windows()) < 1 and CodeKit().settings.get('auto_close_codekit', False):
+        CodeKit().run_apple_script('quit')
 
 #
 # Add Project/Frame work commands

@@ -36,6 +36,12 @@
                                 "args": {"setting": "auto_switch_codekit_projects"},
                                 "caption": "Enable Auto Switch CodeKit Project",
                                 "checkbox": true
+                            },
+                            {
+                                "command": "codekit_toggle_settings",
+                                "args": {"setting": "auto_close_codekit"},
+                                "caption": "Enable Auto Closing CodeKit",
+                                "checkbox": true
                             }
                         ]
                     }

@@ -9,16 +9,19 @@
 
 ##How it works
 
-###Active CodeKit Projects
+###Activating Projects
 
-#####Auto-Activate CodeKit Projects (default behavior)
+#####Auto-Activate Projects (default behavior)
 When you open a project in Sublime Text, CodeKit will automatically open for you, if it's not already open, and then set the active project in CodeKit based on the current file you're working on. So if you have a few different projects open, even files in different projects but in the same window, this plug-in will keep CodeKit focused on the project you're focused on so you don't have to.
 
 Auto-activate will look for a `config.codekit` file in the active file's directory or walk up the directory tree until it either finds a `config.codekit` file and sends a signal to CodeKit or reaches the OS root directory and does nothing. Some path caching is done to prevent lots of unnecessary directory walks when
 you're switching between files in the same directory tree.
 
-#####Manually Activate CodeKit Projects
+#####Manually Activate Projects
 You can disable auto project-switching by unchecking `Preferences>Package Settings>CodeKit Commands>Enable Auto Switch CodeKit Project` and manually change the active project in CodeKit from Sublime via the Command Palette commands `CodeKit Select project` or `CodeKit Select framework`.
+
+###Auto Quit CodeKit (off by default)
+In the `Preferences>Package Settings>CodeKit Commands` you can enable `Auto Quit CodeKit` which will quit CodeKit if you `command+q` Sublime Text or if you close every window in Sublime Text.
 
 ###New Projects
 If you're currently working on a project or framework that CodeKit doesn't know about, simply run the command `CodeKit Add project` or `CodeKit Add framework` from the Command Palette. You'll then be presented with a list of root level folders from Sublime Text's sidebar, once you select one it will be added to CodeKit.
