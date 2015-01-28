@@ -1,4 +1,4 @@
-#[CodeKit](https://incident57.com/codekit/) 2 plug-in for Sublime Text
+#[CodeKit 2](https://incident57.com/codekit/) plug-in for Sublime Text
 
 
 ##Installation
@@ -11,7 +11,7 @@
 
 ###Activating Projects
 
-#####Auto-Activate Projects (default behavior)
+#####Auto-Activate Projects (*default behavior*)
 When you open a project in Sublime Text, CodeKit will automatically open for you, if it's not already open, and then set the active project in CodeKit based on the current file you're working on. So if you have a few different projects open, even files in different projects but in the same window, this plug-in will keep CodeKit focused on the project you're focused on so you don't have to.
 
 Auto-activate will look for a `config.codekit` file in the active file's directory or walk up the directory tree until it either finds a `config.codekit` file and sends a signal to CodeKit or reaches the OS root directory and does nothing. Some path caching is done to prevent lots of unnecessary directory walks when
@@ -20,7 +20,7 @@ you're switching between files in the same directory tree.
 #####Manually Activate Projects
 You can disable auto project-switching by unchecking `Preferences>Package Settings>CodeKit Commands>Enable Auto Switch CodeKit Project` and manually change the active project in CodeKit from Sublime via the Command Palette commands `CodeKit Select project` or `CodeKit Select framework`.
 
-###Auto Quit CodeKit (off by default)
+###Auto Quit CodeKit (*off by default*)
 In the `Preferences>Package Settings>CodeKit Commands` you can enable `Auto Quit CodeKit` which will quit CodeKit if you `command+q` Sublime Text or if you close every window in Sublime Text.
 
 ###New Projects
@@ -30,7 +30,7 @@ Alternatively you can right click on a folder in the side bar and select `CodeKi
 
 ###Pausing CodeKit
 
-#####Auto-Pausing CodeKit
+#####Auto-Pausing CodeKit (*default behavior*)
 By default this plug-in will pause CodeKit when you're not focused on Sublime Text. This can be useful if you use the CLI or third-party tools to handle source control.
 
 CodeKit states:
