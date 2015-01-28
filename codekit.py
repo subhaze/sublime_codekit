@@ -48,6 +48,7 @@ class CodeKit(Singleton):
         # We're more than likely working with a view that's not been
         # saved yet, so bail since there's nothing we can do here.
         if not view.file_name():
+            self.current_path = ''
             return
 
         abs_path = view.file_name()
