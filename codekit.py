@@ -247,7 +247,7 @@ class CodekitPreviewInBrowserSelectCommand(sublime_plugin.ApplicationCommand):
 
     browser_dict = {
         'Firefox': 'Firefox',
-        'Firefox Aurora': 'bundle named "org.mozilla.aurora"',
+        'Firefox Developer Edition': 'bundle named "org.mozilla.firefoxdeveloperedition"',
         'Firefox Nightly': 'bundle named "org.mozilla.nightly"',
         'Chrome': 'Chrome',
         'Chrome Canary': 'Chrome Canary',
