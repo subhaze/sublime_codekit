@@ -14,6 +14,8 @@
 #####Auto-Activate Projects (*default behavior*)
 When you open a project in Sublime Text, CodeKit will automatically open for you, if it's not already open, and then set the active project in CodeKit based on the current file you're working on. So if you have a few different projects open, even files in different projects but in the same window, this plug-in will keep CodeKit focused on the project you're focused on so you don't have to.
 
+**Notice** If you hold the shift key down while CodeKit is *starting* it will `Safe Start` which clears existing project data.
+
 Auto-activate will look for a `config.codekit` file in the active file's directory or walk up the directory tree until it either finds a `config.codekit` file and sends a signal to CodeKit or reaches the OS root directory and does nothing. Some path caching is done to prevent lots of unnecessary directory walks when
 you're switching between files in the same directory tree.
 
