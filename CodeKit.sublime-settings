@@ -9,5 +9,9 @@
 
 	// Setting this to true will attempt to shut CodeKit down when there
 	// are no longer any more Sublime Text windows open.
-	"auto_close_codekit": false
+	"auto_close_codekit": false,
+
+	// list of directories to exclude when listing project folders to
+	// add to CodeKit
+	"exclude_dirs": [".git", ".codekit-cache", "node_modules", "bower_components"]
 }

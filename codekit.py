@@ -29,7 +29,7 @@ class CodeKit(Singleton):
     # Used to ensure we're not making requests to CodeKit
     # on every view change in the same project
     folders_key = ''
-    current_path = ''
+    active_path = ''
 
     def run_apple_script(self, command):
         tell_code_kit = """osascript -e 'tell application "CodeKit" to %s'""" % command
@@ -43,12 +43,10 @@ class CodeKit(Singleton):
 
     # Handle auto activating CodeKit projects
     def activate_code_kit_project(self, view):
-        if not self.settings.get('auto_switch_codekit_projects', True):
-            return
         # We're more than likely working with a view that's not been
         # saved yet, so bail since there's nothing we can do here.
         if not view.file_name():
-            self.current_path = ''
+            self.active_path = ''
             return
 
         abs_path = view.file_name()
@@ -57,32 +55,36 @@ class CodeKit(Singleton):
         # path as a previous check, if so, assume project is active.
         # This helps reduce the amount of looping around dirs
         # looking for a config.codekit file
-        if self.current_path and path.startswith(self.current_path):
+        if self.active_path and path.startswith(self.active_path):
             return
         # Reset the path to nothing since we're now looking for a new
         # codekit project file
-        self.current_path = ''
-        while path and not self.current_path:
-            if 'config.codekit' in os.listdir(path):
-                self.current_path = path
+        self.active_path = ''
+        config_files = ['config.codekit', 'codekit3.config']
+        while path and not self.active_path:
+            if [i for i in config_files if i in os.listdir(path)]:
+                self.active_path = path
             path = '/'.join(path.split('/')[0:-1])
 
-        if self.current_path:
+        if not self.settings.get('auto_switch_codekit_projects', True):
+            return
+        if self.active_path:
             sublime.active_window().run_command('codekit_select_project_from_view')
 
     # Handle CodeKit pause/unpause
     def handle_auto_pausing(self):
+        print(self.active_path, 'path')
         if not self.settings.get('pause_codekit_on_view_deactivate', True):
             return
-        if CodeKit().st_view_active:
+        if CodeKit().st_view_active and self.active_path:
             sublime.active_window().run_command('codekit_unpause')
         else:
             sublime.active_window().run_command('codekit_pause')
 
     def handle_view_activated(self, view):
         self.st_view_active = True
-        self.handle_auto_pausing()
         self.activate_code_kit_project(view)
+        self.handle_auto_pausing()
 
     def handle_view_deactivated(self, view):
         self.st_view_active = False
@@ -142,10 +144,21 @@ class CodekitAddProjectCommand(sublime_plugin.ApplicationCommand):
         elif not from_side_bar:
             self.from_command_palette()
 
+    def get_project_folders(self):
+        excludes = list(CodeKit().settings.get('exclude_dirs', []))
+        print(excludes, 'excludes')
+        folders = sublime.active_window().folders()
+        paths = folders
+        for root, dirs, files in os.walk(folders[0], topdown=True):
+            dirs[:] = [root + '/' + d for d in dirs if d not in excludes]
+            paths = paths + dirs
+        return paths
+
     def from_command_palette(self):
-        self.folders = sublime.active_window().folders()
+        self.folders = self.get_project_folders()
+        base_path = "/".join(self.folders[0].split('/')[:-1])
         sublime.active_window().show_quick_panel(
-            [folder.split('/')[-1] for folder in self.folders],
+            [folder.replace(base_path, '')[1:] for folder in self.folders],
             self.on_done
         )
 
