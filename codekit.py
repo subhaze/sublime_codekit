@@ -73,7 +73,6 @@ class CodeKit(Singleton):
 
     # Handle CodeKit pause/unpause
     def handle_auto_pausing(self):
-        print(self.active_path, 'path')
         if not self.settings.get('pause_codekit_on_view_deactivate', True):
             return
         if CodeKit().st_view_active and self.active_path:
@@ -146,7 +145,6 @@ class CodekitAddProjectCommand(sublime_plugin.ApplicationCommand):
 
     def get_project_folders(self):
         excludes = list(CodeKit().settings.get('exclude_dirs', []))
-        print(excludes, 'excludes')
         folders = sublime.active_window().folders()
         paths = folders
         for root, dirs, files in os.walk(folders[0], topdown=True):
