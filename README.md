@@ -1,4 +1,4 @@
-#[CodeKit 2](https://incident57.com/codekit/) plug-in for Sublime Text
+#[CodeKit](https://incident57.com/codekit/) plug-in for Sublime Text
 
 
 ##Installation
