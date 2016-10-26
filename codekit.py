@@ -60,7 +60,7 @@ class CodeKit(Singleton):
         # Reset the path to nothing since we're now looking for a new
         # codekit project file
         self.active_path = ''
-        config_files = ['config.codekit', 'codekit3.config']
+        config_files = ['config.codekit', '.config.codekit3', 'config.codekit3']
         while path and not self.active_path:
             if [i for i in config_files if i in os.listdir(path)]:
                 self.active_path = path
