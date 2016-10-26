@@ -5,7 +5,7 @@
 	// editing a file or not.
 	// Useful if you're using third-party tools for git.
 	// See: http://incident57.com/codekit/help.html#critical-things
-	"pause_codekit_on_view_deactivate": true,
+	"pause_codekit_on_view_deactivate": false,
 
 	// Setting this to true will attempt to shut CodeKit down when there
 	// are no longer any more Sublime Text windows open.

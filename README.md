@@ -32,8 +32,8 @@ Alternatively you can right click on a folder in the side bar and select `CodeKi
 
 ###Pausing CodeKit
 
-#####Auto-Pausing CodeKit (*default behavior*)
-By default this plug-in will pause CodeKit when you're not focused on Sublime Text. This can be useful if you use the CLI or third-party tools to handle source control.
+#####Auto-Pausing CodeKit (*off by default*)
+By default this plug-in will not pause CodeKit when you're not focused on Sublime Text. This can be useful if you use the CLI or third-party tools to handle source control.
 
 CodeKit states:
 >Before you perform any action that will change large numbers of files at once (switching branches, rebasing, pull requests, etc.) you MUST tell CodeKit to ignore file changes.
