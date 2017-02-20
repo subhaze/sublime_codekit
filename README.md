@@ -33,13 +33,13 @@ Alternatively you can right click on a folder in the side bar and select `CodeKi
 ###Pausing CodeKit
 
 #####Auto-Pausing CodeKit (*off by default*)
-By default this plug-in will not pause CodeKit when you're not focused on Sublime Text. This can be useful if you use the CLI or third-party tools to handle source control.
+This plug-in can auto-pause CodeKit when you're not focused on Sublime Text. This can be useful if you use the CLI or third-party tools to handle source control. Just enable auto-pausing in the settings `"pause_codekit_on_view_deactivate": true`.
 
 CodeKit states:
 >Before you perform any action that will change large numbers of files at once (switching branches, rebasing, pull requests, etc.) you MUST tell CodeKit to ignore file changes.
 
 #####Manually Pausing CodeKit
-If you'd rather handle toggling the paused state of CodeKit you can disable this feature by unchecking `Preferences>Package Settings>CodeKit Commands>Enable Auto Pausing` and run the `CodeKit pause` and `CodeKit unpause` commands from the Command Palette.
+You can use the `CodeKit pause` and `CodeKit unpause` commands from the Command Palette.
 
 _Heads Up:_ These two commands are hidden from the Command Palette when auto-pausing is enabled since they're useless otherwise.
 
